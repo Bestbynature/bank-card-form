@@ -26,9 +26,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Bank-Card-Form](https://Bank-Card-Form.onrender.com) <a name="about-project"></a>
+# 📖 [Bank-Card-Form](https://bank-card-form.onrender.com) <a name="about-project"></a>
 
-**[Bank-Card-Form](https://Bank-Card-Form.onrender.com)** is a user-friendly and efficient form component built using React and Vite. This component is specifically designed to capture and validate essential information related to credit or debit card transactions, including the card number, cardholder's name, and expiry date.
+**[Bank-Card-Form](https://bank-card-form.onrender.com)** is a user-friendly and efficient form component built using React and Vite. This component is specifically designed to capture and validate essential information related to credit or debit card transactions, including the card number, cardholder's name, and expiry date.
 
 Key Features:
 
@@ -79,7 +79,7 @@ Whether you are building a financial application, an e-commerce platform, or any
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-### [Space Travellers Hub](https://Bank-Card-Form.onrender.com)
+### [Bank Card Form](https://bank-card-form.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
