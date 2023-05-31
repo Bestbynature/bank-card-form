@@ -62,7 +62,7 @@ const Form = () => {
         onBlur={(e)=>dispatch(setHolder2(e.target.value))}
         value={holder2 === "Cardholder's name"? '' : holder2}
         onFocus={()=>dispatch(handleFocus(2))}
-        maxLength={25}
+        maxLength={22}
        />
 
         <div className='grid'>

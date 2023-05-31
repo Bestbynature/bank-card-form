@@ -40,7 +40,7 @@ const { value } = focused
     };
 
     updateCardNumber();
-  }, [CN, front, focused]);
+  }, [CN, front, value]);
 
   return (
     <div>
