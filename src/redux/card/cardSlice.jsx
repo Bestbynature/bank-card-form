@@ -4,6 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
     card: JSON.parse(localStorage.getItem("cardList")) || [],
     front: true,
+    focused: {
+        state: false,
+        value: 0
+    },
     CN: '################',
     holder: "Cardholder's name",
     holder2: "Cardholder's name",
@@ -22,8 +26,9 @@ const cardSlice = createSlice({
             state.total += action.payload.price;
             state.quantity += 1;
         },
-        switcher: (state) => {
+        switcher: (state, { payload }) => {
             state.front = !state.front;
+            if(payload) state.focused.value = payload
         },
         setCN: (state, { payload }) => {
             if(!payload || payload === '') state.CN = '################';
@@ -93,9 +98,12 @@ const cardSlice = createSlice({
         handleDelete: (state, { payload }) => {
             state.card = state.card.filter((item) => item.id !== payload);
             localStorage.setItem("cardList", JSON.stringify(state.card));
+        },
+        handleFocus: (state, { payload }) => {
+            state.focused = { state: payload !== 0, value: payload };
         }
     }
 });
 
-export const { addCard, setTime, switcher,resetCard, setCN, setHolder, setHolder2, setMonth, setYear, setCVV, handleDelete } = cardSlice.actions;
+export const { addCard, handleFocus, setTime, switcher,resetCard, setCN, setHolder, setHolder2, setMonth, setYear, setCVV, handleDelete } = cardSlice.actions;
 export default cardSlice.reducer;

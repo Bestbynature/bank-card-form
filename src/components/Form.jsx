@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { switcher, setCVV, setCN, setHolder, setHolder2, setMonth, setYear } from '../redux/card/cardSlice';
+import { switcher, handleFocus, setCVV, setCN, setHolder, setHolder2, setMonth, setYear } from '../redux/card/cardSlice';
 
 const Form = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
 
     const { CN, holder2, CVV, month, year } = useSelector((store) => store.card)
 
@@ -51,13 +52,18 @@ const Form = () => {
   }}
   maxLength={19}
   value={CN === '################' ? '' : CN.replace(/\s/g, '').replace(/(\d{4}(?=\d))/g, '$1 ')}
+  onFocus={()=>dispatch(handleFocus(1))}
+  onBlur={()=>dispatch(handleFocus(0))}
 />
 
         <label htmlFor="2">Card Holder</label>
         <input type='text' placeholder='Card Holder' id='2' required 
         onChange={(e)=>dispatch(setHolder(e.target.value))}
         onBlur={(e)=>dispatch(setHolder2(e.target.value))}
-        value={holder2 === "Cardholder's name"? '' : holder2} />
+        value={holder2 === "Cardholder's name"? '' : holder2}
+        onFocus={()=>dispatch(handleFocus(2))}
+        maxLength={25}
+       />
 
         <div className='grid'>
         <label htmlFor="3">Expiration Date</label>
@@ -65,7 +71,10 @@ const Form = () => {
         <label htmlFor="5">CVV</label>
         <select id='3' name='months' 
         required
-        onChange={(e)=>dispatch(setMonth(e.target.value))}>
+        onChange={(e)=>dispatch(setMonth(e.target.value))}
+        onFocus={()=>dispatch(handleFocus(3))}
+        onBlur={()=>dispatch(handleFocus(0))}
+        >
             <option value='01'>01</option>
             <option value='02'>02</option>
             <option value='03'>03</option>
@@ -82,7 +91,9 @@ const Form = () => {
         </select>
             <select name="Year" id="4" 
             required
-            onChange={(e)=>dispatch(setYear(e.target.value))}>
+            onChange={(e)=>dispatch(setYear(e.target.value))}
+            onFocus={()=>dispatch(handleFocus(3))}
+            onBlur={()=>dispatch(handleFocus(0))}>
                 <option value="16">2016</option>
                 <option value="17">2017</option>
                 <option value="18">2018</option>
@@ -101,7 +112,7 @@ const Form = () => {
                 <option selected value="Year">Year</option>
             </select>
             <input type="text" required id="5"
-            onFocus={()=>dispatch(switcher())}
+            onFocus={()=>dispatch(switcher(4))}
             onBlur={()=>dispatch(switcher())}
             maxLength={3}
             onChange={(e)=>dispatch(setCVV(e.target.value))}

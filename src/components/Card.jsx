@@ -3,9 +3,30 @@ import { useEffect } from 'react';
 
 const Card = () => {
 
-  const { front, CN, holder, month, year, CVV } = useSelector((store) => store.card)
-
+  const { front, CN, holder, month, year, CVV, focused } = useSelector((store) => store.card)
+const { value } = focused
   useEffect(() => {
+    const cardNumber = document.querySelector('.card-number');
+    const cardHolder = document.querySelector('.holder');
+    const cardExpiry = document.querySelector('.expiry');
+    const cardCVV = document.querySelector('.cvv');
+    
+    const elementsMap = {
+      1: cardNumber,
+      2: cardHolder,
+      3: cardExpiry,
+      4: cardCVV,
+    };
+  
+    const element = elementsMap[value];
+  
+    if (element) {
+      document.querySelectorAll('.focused').forEach((el) => {
+        el.classList.remove('focused');
+      });
+      element.classList.add('focused');
+    }
+  
     const updateCardNumber = () => {
       if (!CN) return;
       for (let i = 0; i < 4; i++) {
@@ -19,7 +40,7 @@ const Card = () => {
     };
 
     updateCardNumber();
-  }, [CN, front]);
+  }, [CN, front, focused]);
 
   return (
     <div>
@@ -31,14 +52,14 @@ const Card = () => {
           <div className="part4"></div>
         </div>
         <div className='holder-line'>
-          <div className='holder'>{holder}</div>
-          {month? <div className='expiry'>{month} / {year}</div> :
-          <div className='expiry'>MM / YY</div>}
+          <div className='holder'><p>{holder}</p></div>
+          {month? <div className='expiry'><p>{month}/{year}</p></div> :
+          <div className='expiry'><p>MM/YY</p> </div>}
         </div>
       </div>
       : 
       <div className='card-box2'>
-        <div className="cvv">{CVV}</div>
+        <div className="cvv"><p>{CVV}</p></div>
         </div>}
     </div>
   )
