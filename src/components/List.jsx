@@ -7,6 +7,7 @@ import { handleDelete } from '../redux/card/cardSlice';
 const List = () => {
     const { card } = useSelector((store) => store.card);
     const dispatch = useDispatch();
+    document.title = 'List of cards';
   return (
     <div className='list'>
         <Link to='/' className='list-link'>Back to Home</Link>

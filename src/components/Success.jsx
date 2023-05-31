@@ -7,6 +7,7 @@ const Success = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { time } = useSelector((store) => store.card);
+  document.title = 'Success';
 
   useEffect(() => {
    const interval = setInterval(() => {
