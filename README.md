@@ -79,7 +79,7 @@ Whether you are building a financial application, an e-commerce platform, or any
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-### [Bank Card Form](https://exquisite-lamington-21a3ba.netlify.app/)
+### [Bank Card Form](https://bank-card-registration.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,6 +151,8 @@ Run `npx eslint "**/*.{js,jsx}" --fix` to fix linters"
 You can deploy this project using:
 
 - github pages
+- Netllify
+
 ```sh
 - npm run deploy
 ```
