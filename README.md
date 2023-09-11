@@ -79,7 +79,7 @@ Whether you are building a financial application, an e-commerce platform, or any
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-### [Bank Card Form](https://bank-card-form.onrender.com)
+### [Bank Card Form](https://exquisite-lamington-21a3ba.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
